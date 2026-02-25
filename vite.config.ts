@@ -56,6 +56,8 @@ export default defineConfig({
     resolve: {
         alias: {
             '@': path.resolve(__dirname, 'resources/js'),
+            '@ui': path.resolve(__dirname, 'resources/js/ui'),
+            '@components': path.resolve(__dirname, 'resources/js/components'),
         },
     },
 });

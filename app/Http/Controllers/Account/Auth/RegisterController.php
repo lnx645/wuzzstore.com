@@ -12,6 +12,6 @@ class RegisterController extends Controller
      */
     public function __invoke(Request $request)
     {
-        //
+        return inertia('account/register');
     }
 }

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-Route::group(['prefix' => 'account'],base_path('routes/account.php'))->name('account.');
+Route::group(['prefix' => 'a'],base_path('routes/account.php'))->name('account.');
 Route::get('/', function () {
-    return Inertia::render('Welcome');
+    return Inertia::render('home');
 })->name('home');

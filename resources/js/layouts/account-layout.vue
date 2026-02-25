@@ -3,5 +3,7 @@ import BaseLayout from './base-layout.vue';
 </script>
 
 <template>
-    <BaseLayout> <slot /> </BaseLayout>
+    <BaseLayout>
+        <slot />
+    </BaseLayout>
 </template>

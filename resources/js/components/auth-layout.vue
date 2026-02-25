@@ -1,11 +1,16 @@
 <script setup lang="ts">
+import { home } from '@/routes';
 import ChevronLeft from './icons/ChevronLeft.vue';
+import { router } from '@inertiajs/vue3';
+function click() {
+    router.visit(home());
+}
 </script>
 
 <template>
     <div class="sticky top-0 flex h-12 w-full items-center justify-start shadow-md lg:bg-orange-500 lg:text-white">
         <div class="container mx-auto flex items-center justify-start">
-            <button class="h-full p-2 text-2xl text-stone-500 hover:text-stone-700 active:text-stone-700 lg:hidden">
+            <button @click="click" class="z-1 h-full p-2 text-2xl text-stone-500 hover:text-stone-700 active:text-stone-700 lg:hidden">
                 <ChevronLeft />
             </button>
             <div class="absolute inset-0 flex flex-1 items-center lg:justify-center">
@@ -28,8 +33,3 @@ import ChevronLeft from './icons/ChevronLeft.vue';
         </div>
     </div>
 </template>
-<style>
-.bg {
-    background-image: url('../assets/img/bg.image');
-}
-</style>

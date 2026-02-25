@@ -3,19 +3,19 @@ import AuthLayout from '@/components/auth-layout.vue';
 import { Separator } from '@ui/index';
 import LoginForm from '@/components/login-form/login-form.vue';
 import SocialLogin from '@/components/login-form/social-login.vue';
+import { login } from '@/routes';
 import { Link } from '@inertiajs/vue3';
-import { register } from '@/routes';
 </script>
 
 <template>
     <AuthLayout>
-        <template #title>Masuk ke WuzzStore</template>
+        <template #title>Daftar Akun ke WuzzStore</template>
         <template #description>
-            <p class="text-sm">Belum punya akun? <Link :href="register()" class="text-orange-500">Daftar</Link></p>
+            <p class="text-sm">Sudah punya akun? <Link :href="login()" class="text-orange-500">Masuk</Link></p>
         </template>
         <LoginForm />
         <template #footer>
-            <Separator>Atau masuk dengan</Separator>
+            <Separator>Atau Daftar dengan</Separator>
             <SocialLogin />
         </template>
     </AuthLayout>
