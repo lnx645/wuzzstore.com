@@ -29,7 +29,9 @@ const config = {
 </script>
 
 <template>
-    <div class="pointer-events-none fixed top-10 left-1/2 z-9999 flex w-full max-w-md -translate-x-1/2 flex-col gap-2 px-2">
+    <div
+        class="user-select-none pointer-events-none fixed right-0 bottom-0 left-0 z-9999 flex w-full flex-col gap-2 lg:top-10 lg:left-1/2 lg:max-w-md lg:-translate-x-1/2 lg:px-2"
+    >
         <AnimatePresence>
             <motion.div
                 v-for="toast in toasts"
@@ -43,11 +45,25 @@ const config = {
                 <div
                     :class="[
                         config[toast.type].container,
-                        'relative flex items-center gap-2 overflow-hidden rounded-2xl border p-2 px-4 py-3 shadow-sm',
+                        'relative flex items-center gap-2 overflow-hidden border p-2 shadow-sm lg:rounded-2xl lg:px-4 lg:py-3',
                     ]"
                 >
-                    <div
-                        :class="[config[toast.type].iconBg, 'flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-white shadow-sm']"
+                    <motion.div
+                        :class="[
+                            config[toast.type].iconBg,
+                            'flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white shadow-sm lg:h-10 lg:w-10',
+                        ]"
+                        :initial="{ scale: 0.5, rotate: -45 }"
+                        :animate="{
+                            scale: 1,
+                            rotate: 0,
+                            transition: {
+                                type: 'spring',
+                                stiffness: 400,
+                                damping: 15,
+                                delay: 0.1, // Sedikit delay agar muncul setelah box toast muncul
+                            },
+                        }"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -59,16 +75,16 @@ const config = {
                         >
                             <path stroke-linecap="round" stroke-linejoin="round" :d="config[toast.type].icon" />
                         </svg>
-                    </div>
+                    </motion.div>
 
                     <div class="flex-1 pr-3">
-                        <h3 class="text-base leading-tight font-bold">{{ toast.title }}</h3>
-                        <p class="mt-0 pr-4.5 text-sm opacity-80">{{ toast.message }}</p>
+                        <h3 class="text-sm leading-tight font-bold lg:text-base">{{ toast.title }}</h3>
+                        <p class="mt-0 pr-2 text-xs opacity-80 lg:pr-4.5 lg:text-sm">{{ toast.message }}</p>
                     </div>
 
                     <button
                         @click="removeToast(toast.id)"
-                        class="absolute top-1/2 right-2 -translate-1/2 text-gray-400 transition-colors hover:text-gray-600"
+                        class="absolute top-1/2 right-0 -translate-1/2 text-gray-400 transition-colors hover:text-gray-600 lg:right-2"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />

@@ -10,9 +10,7 @@ export const useAuthentication = () => {
         email: '',
         password: '',
     });
-    let toast = useToast();
     function processLogin() {
-        toast.addToast('Memproses login...', 'Sedang memproses login Anda, harap tunggu. dengan ini kami menyatakan wkwkw', 'success', 90000);
         form.submit(LoginController.process());
     }
     return {
